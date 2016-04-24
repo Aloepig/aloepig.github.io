@@ -1,14 +1,65 @@
 ---
 layout: post
-title:  "Long Longer and more Longer titles look cool too!!"
-date:   2016-03-30 19:45:31 +0530
-categories: science
-author: "Chandler Bing"
+title:  "Jekyll 설치한 하루"
+date:   2016-04-25 00:41:31 +0900
+categories: web
+author: "Aloepig"
 ---
-"Could I be anymore pulling ?"
+#Jekyll 설치하기
 
-Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+먼저 Ruby를 설치해야 한다.
 
- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+[TOC]
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+##Ruby 설치하기
+맥에서 작업하는 것이 편하다. 윈도우는 정식 지원을 아직 안한다고 한다.
+1. RVM 설치 (루비 버전 관리)
+2. Ruby 설치 (git처럼 ruby 명령문을 사용할 수 있게 된다).
+3. Ruby 최신 버전은 Homebrew도 포함하여 설치된다 (예전 엡문서에는 설치하라고 하지만 Ruby만 설치하면 된다).
+
+##Jekyll 설치하기
+`gem install jekyll`
+os-x 새 버전에서는 관리자 권한으로 루비폴더에 접근할 수 없다.
+이를 해결하기 위해서는 기본 폴더가 아닌 다른 폴더에 설치하거나,Homebrew를 설치해서 Ruby를 관리해야 한다. 따라서 ruby 최신버전을 설치하자.
+(맥 기본 Ruby는 구 버전이다. 이걸 몰라서 2시간이 소요).
+http://jekyllrb-ko.github.io/docs/troubleshooting/
+
+시스템 무결성 보호 (System Integrity Protection) 기능의 도입으로 인해, 쓰기 권한이 있었던 몇몇 디렉토리들이 이제부터는 시스템 디렉토리로 인식되어 더 이상 사용할 수 없게 되었습니다. 이를 고려했을 때, 간편한 Jekyll 설치방법은 딱 두 가지로 정리됩니다. 첫 번째는 Gem 이 설치되는 위치를 변경하는 것입니다 (반드시 필요한 경우에만 sudo 와 함께 실행)
+`sudo gem install -n /usr/local/bin jekyll`
+다른 방법은, Homebrew 를 설치해서 Ruby 를 관리하는 것입니다.
+
+##wordpress 에서 jekyll로 import
+1. `gem install jekyll-import`
+2. 블로그 폴더에서
+3. `ruby -rubygems -e 'require "jekyll-import"; JekyllImport::Importers::WordpressDotCom.run({ "source" => "wordpress.2015-01-25.xml" })'`
+4. 이제 설정과 CSS수정하면 로컬 작업은 끝이다.
+
+##AWS S3 에 올리기
+### s3_website
+Deploy your website to S3
+https://github.com/laurilehmijoki/s3_website
+
+손쉽게 연동할 수 있는 프로그램.
+
+1. 루비가 설치된 맥에서 `gem install s3_website` 로 설치한다.
+2. s3에서 bucket 생성하고 AMI를 설정하자.
+https://github.com/laurilehmijoki/s3_website/blob/master/additional-docs/setting-up-aws-credentials.md
+2-1. 유저를 생성
+2-2. Key Id 및 Key 값을 기록(CVS파일로 다운도 가능)
+2-3. full permissions to the S3 bucket (AmazonS3FullAccess)부여
+2-4. 도메인 접속을 위해 CloudFrontFullAccess 부여
+3. 맥에서 `s3_website cfg create` 하면 `s3_website.yml` 파일이 생성된다.
+4. `s3_website cfg apply` 실행하여 접근되는지 확인
+5. 지킬 블로그 폴더에서 정적콘텐츠를 생성 `jekyll build` 
+6. s3에 업로드 `s3_website push`
+
+문제는 AWS의 버전4를 사용하라는 에러가 뜬다는 것. 2시간동안 시도했으나 해결법을 찾지 못했다.
+Failed to fetch an object listing (The authorization mechanism you have provided is not supported. Please use AWS4-HMAC-SHA256. (Service: Amazon S3; Status Code: 400; Error Code: InvalidRequest; Request ID: 2DB5BB3D55ED30FB))
+
+##노드
+노드 기본 설치 폴더(맥)는 다음과 같다.
+- Node.js was installed at
+ /usr/local/bin/node
+- npm was installed at
+  /usr/local/bin/npm
+- Make sure that /usr/local/bin is in your $PATH.
