@@ -96,3 +96,7 @@ usage 권한 삭제
 ▶ 권한 확인하기
 
 `mysql> SHOW GRANTS FOR 사용자명;`
+
+MySql 외부접속
+===============
+in bound, out bound 권한을 확인하자.
