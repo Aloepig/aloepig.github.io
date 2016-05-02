@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "MySql 설정하기"
+date:   2016-05-02 22:45:31 +0530
+categories: DB
+author: "Aloepig"
+tags: AWS
+---
+MySql 설치하기
+==============
