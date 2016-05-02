@@ -40,8 +40,9 @@ MySql 외부 접속 설정(MySql Workbench 사용을 위해)
 먼저 사용자를 확인해보자
 * `mysql> use mysql;`
 * `mysql> select user, host from user;`
-* 
+
 ▶ 사용자 추가
+
 로컬접근 허용
 `mysql> insert into user(host,user,password,ssl_cipher,x509_issuer,x509_subject) values ('localhost','사용자명',password('비밀번호'),'','','');`
 
