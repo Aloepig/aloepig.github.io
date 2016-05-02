@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "MySql 설정하기"
+title:  "MySql 설정하기(5.5)"
 date:   2016-05-02 22:45:31 +0530
 categories: DB
 author: "Aloepig"
@@ -17,5 +17,39 @@ MySql 설정하기
 ==============
 1. `sudo service mysqld start` :서버시작
 2. `sudo mysql_secure_installation` :서버 설정
-> *ㅁㄴㅇㄹ
-> *ㅁㄴㅇㄹ
+3. 현재 root 암호를 입력. 기본적으로 root 계정은 암호 세트를 가지고 있지 않으므로 Enter를 누르면 됨.
+4. Y를 눌러서 암호 설정 모드로 들어간 다음, 안전한 암호를 두 번 입력. 
+5. 안전한 암호 생성에 대한 자세한 내용은 http://www.pctools.com/guides/password/을 참조하십시오. 이 암호를 안전한 장소에 보관하시기 바랍니다.
+6. Y를 눌러서 익명 사용자 계정을 제거합니다.
+7. Y를 눌러서 원격 root 로그인을 비활성화합니다. : root계정으로 DB접속하지 말고, 계정을 생성하여 접속하게 할 것.
+8. Y를 눌러서 테스트 데이터베이스를 제거합니다.
+9. Y를 눌러서 권한 테이블을 다시 로드하고 변경사항을 저장합니다.
+10. `sudo chkconfig mysqld on` : MySQL 서버가 매번 부팅할 때마다 시작하게 함.
+
+MySql 계정생성
+==============
+1. `mysql -u root -p` :mysql 접속
+2. root 암호를 입력
+3. `CREATE USER '유저명'@'localhost' IDENTIFIED BY '비번';` :계정 생성
+4. `CREATE DATABASE `wordpress-db`;` :DB생성
+5. `GRANT ALL PRIVILEGES ON `wordpress-db`.* TO "wordpress-user"@"localhost";` :유저에게 권한 부여
+6. `FLUSH PRIVILEGES;` : 새로고침
+
+MySql 외부 접속 설정(MySql Workbench 사용을 위해)
+==============
+먼저 사용자를 확인해보자
+* `mysql> use mysql;`
+* `mysql> select user, host from user;`
+* 
+▶ 사용자 추가
+로컬접근 허용
+`mysql> insert into user(host,user,password,ssl_cipher,x509_issuer,x509_subject) values ('localhost','사용자명',password('비밀번호'),'','','');`
+
+외부접근 허용
+`mysql> insert into user(host,user,password,ssl_cipher,x509_issuer,x509_subject) values ('%','사용자명',password('비밀번호'),'','','');`
+
+▶ 사용자 삭제
+`mysql> drop user 사용자명@호스트;`
+
+▶ 변경사항 적용
+`mysql> flush privileges;`
