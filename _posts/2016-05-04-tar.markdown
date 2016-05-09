@@ -69,8 +69,8 @@ x : extract (추출) 압축해제
 
 파일 분할
 =====
-split -b 2000m test.tar (2기가로 분할)
+`split -b 2000m test.tar` (2기가로 분할)
 : xaa, xab, xac 와 같이 파일이 생성됨.
 
-cat xa* > test.tar
+`cat xa* > test.tar`
 : tar 파일로 합침
