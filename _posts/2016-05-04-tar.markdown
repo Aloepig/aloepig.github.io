@@ -6,7 +6,7 @@ categories: Linux
 author: Aloepig
 tags: 명령어
 published: true
----------------
+--
 
 gzip (개별압축)
 ===========
