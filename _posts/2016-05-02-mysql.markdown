@@ -41,23 +41,27 @@ MySql 외부 접속 설정(MySql Workbench 사용을 위해)
 * `mysql> use mysql;`
 * `mysql> select user, host from user;`
 
-▶ 사용자 추가
-
+사용자 추가
+===========
 로컬접근 허용
+
 `mysql> insert into user(host,user,password,ssl_cipher,x509_issuer,x509_subject) values ('localhost','사용자명',password('비밀번호'),'','','');`
 
 외부접근 허용
+
 `mysql> insert into user(host,user,password,ssl_cipher,x509_issuer,x509_subject) values ('%','사용자명',password('비밀번호'),'','','');`
 
-▶ 사용자 삭제
+사용자 삭제
+===========
 `mysql> drop user 사용자명@호스트;`
 
-▶ 변경사항 적용
+변경사항 적용
+============
 `mysql> flush privileges;`
 
 MySql 유저 권한
 ===============
-▶  모든 권한 주기
+모든 권한 주기
 
 `mysql> grant all privileges on *.* to 사용자명@호스트 identified by '비밀번호' with grant option;`
 
@@ -88,9 +92,11 @@ MySql 유저 권한
 ▶ usage (삭제하면 로그인조차 안됨) 권한 부여, 삭제
 
 usage 권한 부여
+
 `mysql> GRANT USAGE ON *.* TO USER_NAME@HOST IDENTIFIED BY 'USER_NAME';`
 
 usage 권한 삭제
+
 `mysql> REVOKE USAGE ON *.* FROM USER_NAME@HOST;`
 
 ▶ 권한 확인하기
