@@ -1,4 +1,4 @@
---
+---
 layout: post
 title:  gzip, tar
 date:   2016-05-02 22:45:31 +0900
@@ -6,7 +6,7 @@ categories: Linux
 author: Aloepig
 tags: 명령어
 published: true
---
+---
 
 gzip (개별압축)
 ===========
