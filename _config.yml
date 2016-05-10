@@ -14,5 +14,10 @@ url: "http://aloepig.github.io" # the base hostname & protocol for your site
 twitter_username: giantjiwa
 github_username:  aloepig
 
+# Pageing
+gems: [jekyll-paginate]
+paginate: 50
+paginate_path: "page:num/"
+
 # Build settings
 markdown: kramdown
