@@ -74,3 +74,13 @@ x : extract (추출) 압축해제
 
 `cat xa* > test.tar`
 : tar 파일로 합침
+
+특정 디렉토리 제외하고 tar 압축
+=====
+`tar zcvf /home/bluemary/test.tar --exclude /usr/local/apache/logs /usr/local/apache`
+
+`/home/bluemary/test.tar` : 저정할 파일명
+
+`--exclude /usr/local/apache/logs` : 제외시킬 경로
+
+`/usr/local/apache` : 압축할 대상
