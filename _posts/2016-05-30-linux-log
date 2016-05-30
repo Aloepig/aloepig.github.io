@@ -1,0 +1,46 @@
+---
+layout: post
+title:  "linux log"
+date:   2016-05-30 15:49:31 +0900
+categories: linux
+author: "Aloepig"
+tags: AWS
+published: true
+---
+http://princessbbo.tistory.com/entry/%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%A1%9C%EA%B7%B8-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%B2%B4%ED%81%AC
+리눅스 서버 로그
+====
+`/var/log/` 에 시스템 로그를 기록.
+
+boot.log
+====
+리눅스 부팅시 메시지.
+
+cron
+======
+시스템 작업기록
+
+messages
+======
+커널 메시지 로그.
+
+실시간 로그이기 때문에, 문제 생기기 직전의 메시지를 확인 할 수 있다.
+
+secure
+======
+시스템 접속 기록. (누가, 언제, 어디서, 어떻게)
+
+xferlog
+======
+FTP 로그인 기록.
+
+maillog
+======
+샌드 메일을 통한 메일에 대한 로그
+
+
+참조: AWS의 웹서버 로그
+======
+*apache:`/etc/httpd/log/access_log`
+*nginx: `/var/log/nginx/error.log`
+`
